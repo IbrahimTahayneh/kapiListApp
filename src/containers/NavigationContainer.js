@@ -11,7 +11,11 @@ const Stack = createNativeStackNavigator();
 export default function NavigationContainer() {
   return (
     <RNNavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="List" component={ListScreen} />
         <Stack.Screen name="Form" component={FormScreen} />
       </Stack.Navigator>
