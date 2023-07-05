@@ -1,7 +1,14 @@
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  Platform,
+} from "react-native";
 import React, { useState } from "react";
 import { useRoute } from "@react-navigation/core";
-import { Header } from "../components";
+import { Header, Loading } from "../components";
 
 export default function FormScreen() {
   const route = useRoute();

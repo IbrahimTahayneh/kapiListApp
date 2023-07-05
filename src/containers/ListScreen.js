@@ -1,18 +1,13 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
-import { Card, Header } from "../components";
+import { Card, Header, Screen } from "../components";
 import { useFetchItem } from "../hooks";
 
 export default function ListScreen({ navigation }) {
   const itemsData = useFetchItem();
 
   return (
-    <>
-      <Header
-        style={[styles.headerContainer]}
-        center={<Text>hello</Text>}
-        right={<Text>Hhadhas</Text>}
-      />
+    <Screen withHeader={false}>
       <View style={[styles.contentContainerStyle]}>
         <FlatList
           keyboardShouldPersistTaps={"always"}
@@ -34,7 +29,7 @@ export default function ListScreen({ navigation }) {
           data={itemsData}
         />
       </View>
-    </>
+    </Screen>
   );
 }
 

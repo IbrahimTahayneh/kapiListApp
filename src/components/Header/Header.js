@@ -1,49 +1,56 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View } from "react-native";
-//STYLES
+import React, { memo, useEffect, useRef, useState } from "react";
+import { View, Text } from "react-native";
 import styles from "./styles";
+import { ButtonImage } from "../ButtonImage";
 
 const Header = ({
-  style = [{ height: 80 }],
-  containersStyles = { leftStyle: {}, centerStyle: {}, rightStyle: {} },
-  flex = { left: 0, center: 1, right: 0 },
-  left = <View />,
-  center = <View />,
-  right = <View />,
-}) => (
-  <View style={[styles.container, ...(Array.isArray(style) ? style : [style])]}>
-    <View
-      style={[
-        { flex: flex.left, justifyContent: "center" },
-        ...(Array.isArray(containersStyles.leftStyle)
-          ? containersStyles.leftStyle
-          : [containersStyles.leftStyle]),
-      ]}
-    >
-      {left}
+  style = "",
+  title = "",
+  leftImageSrc = "",
+  rightImageSrc = "",
+  leftComponent = React.ReactNode,
+  rightComponent = React.ReactNode,
+  onLeftPress = () => {},
+  onRightPress = () => {},
+}) => {
+  const [height, setHeight] = useState(60);
+  const ref = useRef();
+  useEffect(() => {
+    //to get the height of the middleContainer since it's height changes according to the title in it
+    setHeight(ref?.current?.clientHeight || 0);
+  }, [ref?.current?.clientHeight]);
+
+  return (
+    <View style={[styles.container,style]}>
+      <View style={[styles.innerContainer]}>
+        <View
+          style={[styles.leftContainer]}
+          isLeftComponentExist={leftComponent ? true : false}
+        >
+          {leftImageSrc ? (
+            <ButtonImage onPress={onLeftPress} source={leftImageSrc} />
+          ) : (
+            leftComponent
+          )}
+        </View>
+        <View style={[styles.middleContainer]}>
+          <Text style={[styles.title]} numberOfLines={2}>
+            {title}
+          </Text>
+        </View>
+        <View
+          style={[styles.rightContainer]}
+          isLeftComponentExist={rightComponent ? true : false}
+        >
+          {rightImageSrc ? (
+            <ButtonImage onPress={onRightPress} source={rightImageSrc} />
+          ) : (
+            rightComponent
+          )}
+        </View>
+      </View>
     </View>
-    <View
-      style={[
-        { flex: flex.center, justifyContent: "center" },
-        ...(Array.isArray(containersStyles.centerStyle)
-          ? containersStyles.centerStyle
-          : [containersStyles.centerStyle]),
-      ]}
-    >
-      {center}
-    </View>
-    <View
-      style={[
-        { flex: flex.right, justifyContent: "center" },
-        ...(Array.isArray(containersStyles.rightStyle)
-          ? containersStyles.rightStyle
-          : [containersStyles.rightStyle]),
-      ]}
-    >
-      {right}
-    </View>
-  </View>
-);
+  );
+};
 
 export default React.memo(Header);
