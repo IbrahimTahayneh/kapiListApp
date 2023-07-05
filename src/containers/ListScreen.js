@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
 import { Card, Header } from "../components";
+import { useFetchItem } from "../hooks";
 
 export default function ListScreen({ navigation }) {
+  const itemsData = useFetchItem();
+
   return (
     <>
       <Header
@@ -11,19 +14,25 @@ export default function ListScreen({ navigation }) {
         right={<Text>Hhadhas</Text>}
       />
       <View style={[styles.contentContainerStyle]}>
-        <Card
-          title="hello"
-          descriptiveText="yelsgsdgsdgsdkgsdkgnsdkgnsdkgnsdkgnsdkgnskdgnsdkgnskdgnskdgnskdgnskdgnskdgnskdgnskd"
+        <FlatList
+          keyboardShouldPersistTaps={"always"}
+          keyExtractor={(item, i) => item?.id?.toString()}
+          renderItem={({ item: itemsData }) => {
+            return (
+              <Card
+                title={itemsData?.title}
+                descriptiveText={itemsData.body}
+                onPress={() =>
+                  navigation.navigate("Form", {
+                    title: itemsData.title,
+                    body: itemsData.body,
+                  })
+                }
+              />
+            );
+          }}
+          data={itemsData}
         />
-        <Card
-          title="hello"
-          descriptiveText="yelsgsdgsdgsdkgsdkgnsdkgnsdkgnsddsdsdssdsdsdsdsdsddssddssdkgnsdkgnskdgnsdkgnskdgnskdgnskdgnskdgnskdgnskdgnskd"
-        />
-        <Card
-          title="hello"
-          descriptiveText="yelsgsdgsdgsdkgsdkgnsdkgnsdkgnsdkgnsdkgnskdgnsdkgnskdgnskdgnskdgnskdgnskdgnskdgnskd"
-        />
-        <Button onPress={() => navigation.navigate("Form")} title="hello" />
       </View>
     </>
   );
