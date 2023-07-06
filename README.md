@@ -50,9 +50,9 @@ Follow this [guide](https://reactnative.dev/docs/environment-setup).
 
 <div style="display: flex; flex-direction: row;">
  <img src="assets/screenShot_5.png" alt="First Screen" width="210" height="432" />
- <img src="assets/screenShot_1.png" alt="Second Screen" width="210" height="432" />
- <img src="assets/screenShot_4.png" alt="Third Screen" width="210" height="432" />
+ <img src="assets/ screenShot_1.png" alt="Second Screen" width="210" height="432" />
+ <img src="assets/ screenShot_4.png" alt="Third Screen" width="210" height="432" />
  <img src="assets/screenShot_6.png" alt="Fourth Screen" width="210" height="432" />
- <img src="assets/screenShot_2.png" alt="Fifth Screen" width="210" height="432" />
- <img src="assets/screenShot_3.png" alt="Sixth Screen" width="210" height="432" />
+ <img src="assets/ screenShot_2.png" alt="Fifth Screen" width="210" height="432" />
+ <img src="assets/ screenShot_3.png" alt="Sixth Screen" width="210" height="432" />
 </div>
