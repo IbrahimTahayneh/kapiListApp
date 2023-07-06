@@ -1,1 +1,1 @@
-export { default as useFetchItem } from "./useFetchItem";
+export * from "./useFonts";

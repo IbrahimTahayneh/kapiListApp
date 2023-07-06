@@ -14,7 +14,7 @@ export const StatusBar = ({
   <>
     <RNStatusBar
       backgroundColor={backgroundColor || "#FFFFFF"}
-      barStyle={barStyle || "light-content"}
+      barStyle={barStyle || "dark-content"}
     />
     <SafeAreaView
       style={[styles.topSafeArea]}
@@ -23,7 +23,7 @@ export const StatusBar = ({
     {children}
     <SafeAreaView
       style={[styles.bottomSafeArea]}
-      backgroundColor={iphoneXBottomBgColor || backgroundColor || "#FFFFFF"}
+      backgroundColor={iphoneXBottomBgColor || backgroundColor || "#EDEDED"}
     />
   </>
 );

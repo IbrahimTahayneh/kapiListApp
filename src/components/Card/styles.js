@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  
   categoryShadow: {
     shadowColor: "#5a5a5a",
     shadowOffset: {
@@ -13,7 +12,7 @@ export default StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F5F5F5",
     borderRadius: 15,
     margin: 10,
     padding: 10,
@@ -24,13 +23,15 @@ export default StyleSheet.create({
     marginBottom: 5,
     textAlign: "center",
     paddingHorizontal: 10,
+    fontFamily: "PoppinsSemiBold",
   },
 
   descriptiveText: {
-    color: "#9E9E9E",
+    color: "#616161",
     marginBottom: 21,
     textAlign: "center",
     paddingLeft: 12,
     paddingRight: 12,
+    fontFamily: "PoppinsRegular",
   },
 });

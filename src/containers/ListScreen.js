@@ -1,46 +1,29 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
-import React from "react";
-import { Card, Header, Screen } from "../components";
-import { useFetchItem } from "../hooks";
+import { FlatList } from "react-native";
+import React, { useContext } from "react";
+
+import { Card, Screen } from "../components";
+import { DataContext } from "../context/DataContext";
+import { Logo } from "../assets/images";
 
 export default function ListScreen({ navigation }) {
-  const itemsData = useFetchItem();
+  const { data } = useContext(DataContext);
 
   return (
-    <Screen withHeader={false}>
-      <View style={[styles.contentContainerStyle]}>
-        <FlatList
-          keyboardShouldPersistTaps={"always"}
-          keyExtractor={(item, i) => item?.id?.toString()}
-          renderItem={({ item: itemsData }) => {
-            return (
-              <Card
-                title={itemsData?.title}
-                descriptiveText={itemsData.body}
-                onPress={() =>
-                  navigation.navigate("Form", {
-                    title: itemsData.title,
-                    body: itemsData.body,
-                  })
-                }
-              />
-            );
-          }}
-          data={itemsData}
-        />
-      </View>
+    <Screen headerLeftComponent={<Logo />} headerTitle="KABI" isLoading={!data}>
+      <FlatList
+        keyboardShouldPersistTaps={"handled"}
+        keyExtractor={(item, i) => item?.id}
+        renderItem={({ item }) => {
+          return (
+            <Card
+              title={item?.title}
+              bodyText={item.body}
+              onPress={() => navigation.navigate("Form", { id: item?.id })}
+            />
+          );
+        }}
+        data={data}
+      />
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  contentContainerStyle: {
-    // paddingHorizontal: 30,
-    // paddingBottom: 15,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: 20,
-  },
-});

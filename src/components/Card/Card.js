@@ -4,7 +4,7 @@ import styles from "./styles";
 
 const Card = ({
   title = "",
-  descriptiveText = "",
+  bodyText = "",
   onPress = () => {},
   style = {},
 }) => {
@@ -15,9 +15,9 @@ const Card = ({
       style={[styles.container, style]}
     >
       <Text style={[styles.categoryText]}>{title}</Text>
-      <Text style={styles.descriptiveText}>{descriptiveText}</Text>
+      <Text style={styles.descriptiveText}>{bodyText}</Text>
     </TouchableOpacity>
   );
 };
 
-export default Card;
+export default React.memo(Card);

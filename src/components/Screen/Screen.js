@@ -18,12 +18,8 @@ const Screen = ({
   headerTitle = "",
   headerLeftComponent,
   headerRightComponent,
-  headerLeftImageSrc,
-  headerRightImageSrc,
-  onPressHeaderLeft = () => {},
-  onPressHeaderRight = () => {},
   withKeyboardAvoidingView = false,
-  keyboardShouldPersistTaps = "always",
+  keyboardShouldPersistTaps = "handled",
   iphoneXBottomBgColor = "",
 }) => {
   const _renderContents = () => (
@@ -31,10 +27,6 @@ const Screen = ({
       {withHeader ? (
         <Header
           title={headerTitle}
-          leftImageSrc={headerLeftImageSrc}
-          onLeftPress={onPressHeaderLeft}
-          rightImageSrc={headerRightImageSrc}
-          onRightPress={onPressHeaderRight}
           leftComponent={headerLeftComponent}
           rightComponent={headerRightComponent}
         />
@@ -50,12 +42,12 @@ const Screen = ({
       containers = (
         <ScrollView
           style={[styles.scrollView]}
-          keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+          keyboardShouldPersistTaps={"handled"}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           alwaysBounceVertical={false}
           bounces={false}
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={{ flexGrow: 1, flex: 1 }}
         >
           {containers}
         </ScrollView>
@@ -66,7 +58,7 @@ const Screen = ({
       containers = (
         <KeyboardAvoidingView
           style={{ flex: 1 }}
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          behavior={Platform.OS === "ios" ? "padding" : null}
         >
           {containers}
         </KeyboardAvoidingView>
@@ -90,7 +82,8 @@ const Screen = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EDEDED",
+    backgroundColor: "#FFF",
+    padding: 10,
   },
   scrollView: {
     flex: 1,
