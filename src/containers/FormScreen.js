@@ -8,7 +8,9 @@ import {
 import React, { useEffect, useState, useContext } from "react";
 import { useRoute, useNavigation } from "@react-navigation/core";
 import Icon from "react-native-vector-icons/AntDesign";
+
 import { Screen } from "../components";
+
 import { DataContext } from "../context/DataContext";
 
 export default function FormScreen() {

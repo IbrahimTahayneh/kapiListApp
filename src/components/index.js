@@ -1,5 +1,7 @@
-export { default as Card } from "./Card";
-export { default as Header } from "./Header";
-export { default as Loading } from "./Loading";
-export { default as StatusBar } from "./StatusBar";
-export { default as Screen } from "./Screen";
+import Card from "./Card";
+import Header from "./Header";
+import Loading from "./Loading";
+import StatusBar from "./StatusBar";
+import Screen from "./Screen";
+
+export { Card, Header, Loading, StatusBar, Screen };

@@ -1,1 +1,3 @@
-export { default } from "./Screen";
+import Screen from "./Screen";
+
+export default Screen;

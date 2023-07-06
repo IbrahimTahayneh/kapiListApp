@@ -1,25 +1,17 @@
 import React from "react";
-import {
-  View,
-  Platform,
-  KeyboardAvoidingView,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
-import { Header, Loading, StatusBar } from "../../components";
+import { View, Platform, KeyboardAvoidingView, StyleSheet } from "react-native";
+import { Header, Loading, StatusBar } from "../";
 
 const Screen = ({
   children,
   style = "",
   barStyleBackgroundColor = "white",
-  scrollable = true,
   isLoading = false,
   withHeader = true,
   headerTitle = "",
   headerLeftComponent,
   headerRightComponent,
   withKeyboardAvoidingView = false,
-  keyboardShouldPersistTaps = "handled",
   iphoneXBottomBgColor = "",
 }) => {
   const _renderContents = () => (
@@ -37,22 +29,6 @@ const Screen = ({
 
   const getContainers = () => {
     let containers = _renderContents();
-
-    if (scrollable) {
-      containers = (
-        <ScrollView
-          style={[styles.scrollView]}
-          keyboardShouldPersistTaps={"handled"}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          alwaysBounceVertical={false}
-          bounces={false}
-          contentContainerStyle={{ flexGrow: 1, flex: 1 }}
-        >
-          {containers}
-        </ScrollView>
-      );
-    }
 
     if (withKeyboardAvoidingView) {
       containers = (
@@ -84,9 +60,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF",
     padding: 10,
-  },
-  scrollView: {
-    flex: 1,
   },
 });
 
